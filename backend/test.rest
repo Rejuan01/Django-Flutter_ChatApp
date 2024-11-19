@@ -1,0 +1,11 @@
+POST http://127.0.0.1:8000/signup/
+
+Content-Type: application/json
+
+{
+  "username": "vondo",
+  "password": "password",
+  "email": "vondo@gmail.com"
+}
+
+
