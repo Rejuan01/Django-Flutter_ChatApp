@@ -1,5 +1,5 @@
 from rest_framework.decorators import api_view
-from rest_framework import status
+from rest_framework import status, generics
 from .serializers import UserSerializer
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
@@ -56,3 +56,9 @@ class CheckTokenView(APIView):
                 'response' : 'the user email: {}'.format(user.email)  # We can also directly use .format(request.user.email)
             }
         )
+    
+from .serializers import ProfileSerializers
+
+class ProfileDetail(generics.RetrieveUpdateAPIView):
+    serializer_class = ProfileSerializers
+    queryset = Profile.objects.all()     # base query, RetrieveUpdateAPIView retrive the specific profile for the pk
